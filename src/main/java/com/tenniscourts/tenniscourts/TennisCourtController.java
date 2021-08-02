@@ -1,7 +1,6 @@
 package com.tenniscourts.tenniscourts;
 
-import com.tenniscourts.config.BaseRestController;
-<<<<<<< HEAD
+
 import com.tenniscourts.schedules.ScheduleController;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
