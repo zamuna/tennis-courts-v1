@@ -23,8 +23,11 @@ public class ReservationServiceTest {
     @InjectMocks
     ReservationService reservationService;
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> f6ab42249b6f6db1f62f964344dd357ee150b39c
     @Test
     public void getRefundValueFullRefund() {
         Schedule schedule = new Schedule();

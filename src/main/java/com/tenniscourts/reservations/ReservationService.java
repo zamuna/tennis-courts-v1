@@ -7,7 +7,10 @@ import org.springframework.stereotype.Service;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.temporal.ChronoUnit;
+<<<<<<< HEAD
 import java.util.Optional;
+=======
+>>>>>>> f6ab42249b6f6db1f62f964344dd357ee150b39c
 
 @Service
 @AllArgsConstructor
@@ -22,7 +25,11 @@ public class ReservationService {
     }
 
     public ReservationDTO findReservation(Long reservationId) {
+<<<<<<< HEAD
         return reservationRepository.findById(reservationId).map(reservationMapper::map).<EntityNotFoundException>orElseThrow(() -> {
+=======
+        return reservationRepository.findById(reservationId).map(reservationMapper::map).orElseThrow(() -> {
+>>>>>>> f6ab42249b6f6db1f62f964344dd357ee150b39c
             throw new EntityNotFoundException("Reservation not found.");
         });
     }
@@ -31,7 +38,11 @@ public class ReservationService {
         return reservationMapper.map(this.cancel(reservationId));
     }
 
+<<<<<<< HEAD
     private Reservation cancel(Long reservationId) throws  EntityNotFoundException{
+=======
+    private Reservation cancel(Long reservationId) {
+>>>>>>> f6ab42249b6f6db1f62f964344dd357ee150b39c
         return reservationRepository.findById(reservationId).map(reservation -> {
 
             this.validateCancellation(reservation);
@@ -39,7 +50,11 @@ public class ReservationService {
             BigDecimal refundValue = getRefundValue(reservation);
             return this.updateReservation(reservation, refundValue, ReservationStatus.CANCELLED);
 
+<<<<<<< HEAD
         }).<EntityNotFoundException>orElseThrow(() -> {
+=======
+        }).orElseThrow(() -> {
+>>>>>>> f6ab42249b6f6db1f62f964344dd357ee150b39c
             throw new EntityNotFoundException("Reservation not found.");
         });
     }
