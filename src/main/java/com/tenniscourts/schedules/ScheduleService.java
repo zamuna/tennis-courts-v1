@@ -1,6 +1,5 @@
 package com.tenniscourts.schedules;
 
-<<<<<<< HEAD
 import com.tenniscourts.exceptions.EntityNotFoundException;
 import com.tenniscourts.tenniscourts.TennisCourt;
 import com.tenniscourts.tenniscourts.TennisCourtMapper;
@@ -8,9 +7,8 @@ import com.tenniscourts.tenniscourts.TennisCourtRepository;
 import com.tenniscourts.tenniscourts.TennisCourtService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-=======
+
 import lombok.AllArgsConstructor;
->>>>>>> f6ab42249b6f6db1f62f964344dd357ee150b39c
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -24,7 +22,6 @@ public class ScheduleService {
 
     private final ScheduleMapper scheduleMapper;
 
-<<<<<<< HEAD
     private final TennisCourtRepository tennisCourtRepository;
     private final TennisCourtMapper tennisCourtMapper;
 
@@ -38,32 +35,21 @@ public class ScheduleService {
         scheduleDTO.setEndDateTime(createScheduleRequestDTO.getStartDateTime().plusHours(1));
         scheduleDTO.setTennisCourt(tennisCourtMapper.map(tennisCourtRepository.findById(tennisCourtId).get()));
        return  scheduleMapper.map((scheduleRepository.saveAndFlush(scheduleMapper.map(scheduleDTO))));
-=======
-    public ScheduleDTO addSchedule(Long tennisCourtId, CreateScheduleRequestDTO createScheduleRequestDTO) {
-        //TODO: implement addSchedule
-        return null;
->>>>>>> f6ab42249b6f6db1f62f964344dd357ee150b39c
-    }
+
 
     public List<ScheduleDTO> findSchedulesByDates(LocalDateTime startDate, LocalDateTime endDate) {
-        //TODO: implement
-<<<<<<< HEAD
+
         List<Schedule> schedules = scheduleRepository.findByStartDateTimeAndEndDateTime(startDate, endDate);
         return scheduleMapper.map(schedules);
-=======
-        return null;
->>>>>>> f6ab42249b6f6db1f62f964344dd357ee150b39c
+
     }
 
     public ScheduleDTO findSchedule(Long scheduleId) {
         //TODO: implement
-<<<<<<< HEAD
+
         return scheduleRepository.findById(scheduleId).map(scheduleMapper::map).<EntityNotFoundException>orElseThrow(() -> {
             throw new EntityNotFoundException("Schedule not found.");
         });
-=======
-        return null;
->>>>>>> f6ab42249b6f6db1f62f964344dd357ee150b39c
     }
 
     public List<ScheduleDTO> findSchedulesByTennisCourtId(Long tennisCourtId) {
