@@ -8,6 +8,5 @@ import java.util.List;
 public interface ScheduleRepository extends JpaRepository<Schedule, Long> {
 
     List<Schedule> findByTennisCourt_IdOrderByStartDateTime(Long id);
-
-
+    List<Schedule> findByStartDateTimeAndEndDateTime(LocalDateTime startTime, LocalDateTime endTime);
 }

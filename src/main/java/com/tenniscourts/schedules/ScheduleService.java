@@ -7,7 +7,6 @@ import com.tenniscourts.tenniscourts.TennisCourtRepository;
 import com.tenniscourts.tenniscourts.TennisCourtService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -36,17 +35,16 @@ public class ScheduleService {
         scheduleDTO.setTennisCourt(tennisCourtMapper.map(tennisCourtRepository.findById(tennisCourtId).get()));
        return  scheduleMapper.map((scheduleRepository.saveAndFlush(scheduleMapper.map(scheduleDTO))));
 
+    }
 
     public List<ScheduleDTO> findSchedulesByDates(LocalDateTime startDate, LocalDateTime endDate) {
-
+        //TODO: implement
         List<Schedule> schedules = scheduleRepository.findByStartDateTimeAndEndDateTime(startDate, endDate);
         return scheduleMapper.map(schedules);
-
     }
 
     public ScheduleDTO findSchedule(Long scheduleId) {
         //TODO: implement
-
         return scheduleRepository.findById(scheduleId).map(scheduleMapper::map).<EntityNotFoundException>orElseThrow(() -> {
             throw new EntityNotFoundException("Schedule not found.");
         });

@@ -1,5 +1,6 @@
 package com.tenniscourts.tenniscourts;
 
+import com.tenniscourts.config.BaseRestController;
 
 import com.tenniscourts.schedules.ScheduleController;
 import io.swagger.annotations.ApiOperation;
@@ -21,7 +22,6 @@ public class TennisCourtController extends BaseRestController {
     private final TennisCourtService tennisCourtService;
 
     //TODO: implement rest and swagger
-
     @ApiOperation(value = "add tennis court", notes="add tennis court",nickname = "add tennis court")
     @ApiResponses(value = {
             @ApiResponse(code = 500, message = "Server error"),
@@ -40,7 +40,7 @@ public class TennisCourtController extends BaseRestController {
             @ApiResponse(code = 200, message = "Successful retrieval",
                     response = ScheduleController.class) })
     @GetMapping(value = "/tennis-court/{tennisCourtId}")
-
+    public ResponseEntity<TennisCourtDTO> findTennisCourtById(@PathVariable Long tennisCourtId) {
         return ResponseEntity.ok(tennisCourtService.findTennisCourtById(tennisCourtId));
     }
 
@@ -52,7 +52,7 @@ public class TennisCourtController extends BaseRestController {
             @ApiResponse(code = 200, message = "Successful retrieval",
                     response = ScheduleController.class) })
     @GetMapping(value = "/tennis-court/schedule/{tennisCourtId}")
-
+    public ResponseEntity<TennisCourtDTO> findTennisCourtWithSchedulesById(@QueryParam("tennisCourtId") Long tennisCourtId) {
         return ResponseEntity.ok(tennisCourtService.findTennisCourtWithSchedulesById(tennisCourtId));
     }
 }
